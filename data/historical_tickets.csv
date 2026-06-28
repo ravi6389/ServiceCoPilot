@@ -1,0 +1,11 @@
+TicketID,Machine,ErrorCode,Problem,RootCause,Resolution,Parts,EngineerNotes
+
+1001,Compressor A,E101,Motor overheats after twenty minutes,Cooling fan failure,Replace cooling fan,FAN101,Cleaned filter and replaced fan
+
+1002,Pump B,E202,Pressure is low,Damaged seal,Replace seal,SEAL22,Pressure normal after replacement
+
+1003,Compressor A,E101,Temperature increases quickly,Blocked air filter,Clean filter,FILTER10,Filter heavily clogged
+
+1004,Generator C,E501,Engine vibration,Loose mounting bolts,Tighten bolts,None,Vibration reduced
+
+1005,Pump B,E205,Oil leakage,Worn gasket,Replace gasket,GASKET45,Leak stopped
