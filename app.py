@@ -137,7 +137,7 @@ import os
 # PAGE CONFIG
 # ---------------------------------------------------
 if not os.path.exists("vector_db/chroma.sqlite3"):
-    st.write('vector_db doesnt exist)
+    st.write('vector_db doesnt exist')
     from rag.create_vector_db import create_vector_db
     create_vector_db()
     
