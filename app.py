@@ -136,6 +136,19 @@ import os
 # ---------------------------------------------------
 # PAGE CONFIG
 # ---------------------------------------------------
+
+st.write("Current working directory:", os.getcwd())
+
+st.write("vector_db exists:", os.path.exists("vector_db"))
+
+st.write(
+    "chroma.sqlite3 exists:",
+    os.path.exists("vector_db/chroma.sqlite3")
+)
+
+if os.path.exists("vector_db"):
+    st.write("Files inside vector_db:")
+    st.write(os.listdir("vector_db"))
 if not os.path.exists("vector_db/chroma.sqlite3"):
     st.write('vector_db doesnt exist')
     from rag.create_vector_db import create_vector_db
