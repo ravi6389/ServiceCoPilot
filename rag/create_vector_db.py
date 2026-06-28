@@ -10,7 +10,7 @@ CSV_PATH = "data/historical_tickets.csv"
 VECTOR_DB = "vector_db"
 
 
-def create_db():
+def create_vector_db():
 
     print("Loading historical tickets...")
 
