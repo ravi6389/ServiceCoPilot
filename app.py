@@ -154,6 +154,16 @@ if not os.path.exists("vector_db/chroma.sqlite3"):
     from rag.create_vector_db import create_vector_db
     create_vector_db()
     
+from langchain_chroma import Chroma
+from rag.embeddings import get_embeddings
+
+db = Chroma(
+    persist_directory="vector_db",
+    embedding_function=get_embeddings()
+)
+
+st.write("Documents in Chroma:", db._collection.count())
+  
 st.set_page_config(
     page_title="Service Engineer Copilot",
     page_icon="🛠",
