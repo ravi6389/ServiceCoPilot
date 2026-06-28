@@ -131,11 +131,15 @@
 import streamlit as st
 
 from rag.chatbot import ask_service_engineer
+import os
 
 # ---------------------------------------------------
 # PAGE CONFIG
 # ---------------------------------------------------
-
+if not os.path.exists("vector_db/chroma.sqlite3"):
+    from rag.create_vector_db import create_vector_db
+    create_vector_db()
+    
 st.set_page_config(
     page_title="Service Engineer Copilot",
     page_icon="🛠",
