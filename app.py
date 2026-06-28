@@ -132,38 +132,48 @@ import streamlit as st
 
 from rag.chatbot import ask_service_engineer
 import os
+from langchain_chroma import Chroma
+from rag.embeddings import get_embeddings
+
 
 # ---------------------------------------------------
 # PAGE CONFIG
 # ---------------------------------------------------
 
-st.write("Current working directory:", os.getcwd())
-
-st.write("vector_db exists:", os.path.exists("vector_db"))
-
-st.write(
-    "chroma.sqlite3 exists:",
-    os.path.exists("vector_db/chroma.sqlite3")
-)
 
 if os.path.exists("vector_db"):
-    st.write("Files inside vector_db:")
-    st.write(os.listdir("vector_db"))
-if not os.path.exists("vector_db/chroma.sqlite3"):
-    st.write('vector_db doesnt exist')
-    from rag.create_vector_db import create_vector_db
-    create_vector_db()
+   
     
-from langchain_chroma import Chroma
-from rag.embeddings import get_embeddings
 
-db = Chroma(
-    persist_directory="vector_db",
-    embedding_function=get_embeddings()
-)
+    db = Chroma(
+        persist_directory="vector_db",
+        embedding_function=get_embeddings()
+    )
+    
+    doc_count = db._collection.count()
 
-st.write("Documents in Chroma:", db._collection.count())
-  
+    st.write(f"Documents in Chroma : {doc_count}")
+
+    if doc_count == 0:
+    
+        st.warning("Vector DB is empty. Rebuilding...")
+    
+        from rag.create_vector_db import create_vector_db
+    
+        create_vector_db()
+    
+        # Reload database
+        db = Chroma(
+            persist_directory="vector_db",
+            embedding_function=get_embeddings()
+        )
+    
+        st.write(
+            "Documents after rebuild:",
+            db._collection.count()
+        )
+
+      
 st.set_page_config(
     page_title="Service Engineer Copilot",
     page_icon="🛠",
