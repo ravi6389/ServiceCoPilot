@@ -32,7 +32,7 @@ def create_vector_db():
 
     )
 
-    print("Done.")
+   
 
 
 if __name__ == "__main__":
