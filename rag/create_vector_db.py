@@ -3,7 +3,7 @@ from langchain_chroma import Chroma
 from rag.embeddings import get_embeddings
 
 from rag.utils import load_ticket_documents
-
+import streamlit as st
 
 CSV_PATH = "data/historical_tickets.csv"
 
