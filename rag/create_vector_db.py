@@ -7,20 +7,20 @@ from rag.utils import load_ticket_documents
 
 CSV_PATH = "data/historical_tickets.csv"
 
-VECTOR_DB = "vector_db"
+VECTOR_DB = "../vector_db"
 
 
 def create_vector_db():
 
-    print("Loading historical tickets...")
+    st.write("Loading historical tickets...")
 
     docs = load_ticket_documents(CSV_PATH)
 
-    print(f"Loaded {len(docs)} tickets")
+    st.write(f"Loaded {len(docs)} tickets")
 
     embedding = get_embeddings()
 
-    print("Creating ChromaDB...")
+    st.write("Creating ChromaDB...")
 
     Chroma.from_documents(
 
